@@ -38,21 +38,21 @@ def scrape():
 	mars_facts_df = mars_facts[0]
 	mars_facts_df.columns = ['Details', 'Mars', 'Earth']
 	mars_facts_df = mars_facts_df.transpose()
-
+	
+	
+	
+	
 	mars_hemi_url = 'https://marshemispheres.com/'
 	browser.visit(mars_hemi_url)
-	hemisphere_image_urls = []
-	for hemis in range(4):
-		browser.links.find_by_partial_text('Hemisphere')[hemis].click()
-		html = browser.html
-		hemi_soup = soup(html, 'html.parser')
-		title = hemi_soup.find('h2', class_='title').get_text
-		img_url = hemi_soup.find('li').a.get('href')
-		hemispheres = {}
-		hemispheres['img_url'] = f'https://marshemispheres.com/{img_url}'
-		hemispheres['title'] = title
-		hemisphere_image_urls.append(hemispheres)
-
+	
+	links = browser.find_by_css("a.product-item img")
+	for item in range(len(links)):
+		hemisphere = {}
+		browser.find_by_css("a.product-item img")[item].click()
+		sample_element = browser.find_link_by_text("Sample").first
+		hemisphere["img_url"] = sample_element["href"]
+		hemisphere["title"] = browser.find_by_css("h2.title").text
+		hemisphere_image_urls.append(hemisphere)
 
 
 	data = {"Mars Title": title_mars,
