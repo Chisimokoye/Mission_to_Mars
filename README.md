@@ -6,5 +6,6 @@ Build a Web Application that Scrapes Various Websites for Data Related to the Mi
 
 This project consisted on a Python script to scrape text and images from various websites that talked about Mission to Mars. Then, I created a Flask web application with a rendered HTML template designed using Bootstrap to display all the data in a single HTML page. The data scraped and stored in a non-relational Mongo database. 
 
-Click the scrape dutton and see. 
+This link takes you to my website. http://127.0.0.1:5000/
+Also, click the scrape button and see. 
 
